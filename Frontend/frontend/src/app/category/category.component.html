@@ -1,0 +1,18 @@
+
+<button type="button"  (click)="goToProducts()">
+          Productos
+        </button>
+<div class="search-bar">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar Categoria..." />
+  <button (click)="search()">Buscar</button>
+</div>
+
+<ul>
+  <li *ngFor="let Category of category">
+    <strong>{{ Category.name }}</strong> <h3>Descripción:</h3>{{ Category.description }} 
+    <button (click)="deleteCategory(Category.id!)">Eliminar</button>
+    <button [routerLink]="['/category/edit', Category.id]">Editar</button>
+  </li>
+</ul>
+
+<button routerLink="/category/create">Crear nuevo Categoria</button>

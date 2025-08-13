@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductsService, Product } from '../products.service';
+import { Route } from '@angular/router';
 
 @Component({
   selector: 'app-product-form',
@@ -11,7 +12,7 @@ import { ProductsService, Product } from '../products.service';
   templateUrl: './product-form.component.html'
 })
 export class ProductFormComponent implements OnInit {
-  product: Product = { name: '', price: 0, description: '' };
+  product: Product = { name: '', price: 0, description: '', category_id: '' };
   isEdit = false;
 
   constructor(
@@ -41,5 +42,8 @@ export class ProductFormComponent implements OnInit {
         this.router.navigate(['/products']);
       });
     }
+  }
+      goToCategory(): void {
+    this.router.navigate(['/category']);
   }
 }

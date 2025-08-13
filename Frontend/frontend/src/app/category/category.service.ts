@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface Product {
+export interface Category {
   id?: number;
   name: string;
   price: number;
@@ -14,12 +14,12 @@ export interface Product {
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
-  private apiUrl = 'http://localhost:3000/products'; // 
+export class CategoryService {
+  private apiUrl = 'http://localhost:3000/categories'; // 
 
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<any[]> {
+  getCategory(): Observable<any[]> {
     const token = localStorage.getItem('token'); 
     return this.http.get<any[]>(this.apiUrl, {
       headers: { Authorization: `Bearer ${token}` }
@@ -27,28 +27,28 @@ export class ProductsService {
   }
 
 
-  searchProducts(query: string): Observable<Product[]> {
+  searchCategory(query: string): Observable<Category[]> {
   const token = localStorage.getItem('token'); 
-  return this.http.get<Product[]>(`${this.apiUrl}/${query}`, {
+  return this.http.get<Category[]>(`${this.apiUrl}/${query}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
 
-createProduct(product: Product): Observable<Product> {
+createCategory(category: Category): Observable<Category> {
   const token = localStorage.getItem('token');
-  return this.http.post<Product>(this.apiUrl, product, {
+  return this.http.post<Category>(this.apiUrl, category, {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
 
-updateProduct(id: number, product: Product): Observable<Product> {
+updateCategory(id: number, category: Category): Observable<Category> {
   const token = localStorage.getItem('token');
-  return this.http.put<Product>(`${this.apiUrl}/${id}`, product, {
+  return this.http.put<Category>(`${this.apiUrl}/${id}`, category, {
     headers: { Authorization: `Bearer ${token}` }
   });
 }
 
-deleteProduct(id: number): Observable<void> {
+deleteCategory(id: number): Observable<void> {
   const token = localStorage.getItem('token');
   return this.http.delete<void>(`${this.apiUrl}/${id}`, {
     headers: { Authorization: `Bearer ${token}` }

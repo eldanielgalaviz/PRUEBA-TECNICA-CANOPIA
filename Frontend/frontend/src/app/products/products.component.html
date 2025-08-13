@@ -1,3 +1,7 @@
+<button type="button"  (click)="goToCategory()">
+          Categorias
+        </button>
+
 <div class="search-bar">
   <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar producto..." />
   <button (click)="search()">Buscar</button>
@@ -5,7 +9,7 @@
 
 <ul>
   <li *ngFor="let product of products">
-    <strong>{{ product.name }}</strong> - ${{ product.price }}
+    <strong>{{ product.name }}</strong> <h3>Categoria:</h3>{{ product.category_id }} | Precio ${{ product.price }}
     <button (click)="deleteProduct(product.id!)">Eliminar</button>
     <button [routerLink]="['/products/edit', product.id]">Editar</button>
   </li>

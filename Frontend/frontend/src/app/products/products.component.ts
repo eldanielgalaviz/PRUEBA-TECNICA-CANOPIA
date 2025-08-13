@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProductsService, Product } from './products.service';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -14,8 +15,9 @@ import { RouterModule } from '@angular/router';
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
   searchTerm = '';
+  
 
-  constructor(private productsService: ProductsService) {}
+  constructor(private productsService: ProductsService,private router: Router) {}
 
   ngOnInit(): void {
     this.loadProducts();
@@ -33,7 +35,7 @@ export class ProductsComponent implements OnInit {
        if (Array.isArray(response)) {
           this.products = response;
         } else if (response) {
-          this.products = [response]; // Convertir un solo producto en array
+          this.products = [response]; 
         } else {
           this.products = [];
         }
@@ -52,4 +54,7 @@ export class ProductsComponent implements OnInit {
     }
   }
   
+    goToCategory(): void {
+    this.router.navigate(['/category']);
+  }
 }

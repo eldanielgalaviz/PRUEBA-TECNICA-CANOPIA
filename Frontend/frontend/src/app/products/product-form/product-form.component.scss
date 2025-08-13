@@ -1,0 +1,171 @@
+/* ═══════════════════════════════════════════════════════
+   ESTILO MINIMALISTA Y RÚSTICO
+   ═══════════════════════════════════════════════════════ */
+
+/* Contenedor principal */
+.products-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-family: 'Georgia', serif;
+  background-color: #fafafa;
+  color: #333;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.search-bar input[type="text"] {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: #fff;
+}
+
+.search-bar input[type="text"]:focus {
+  outline: none;
+  border-color: #666;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.search-bar button:hover {
+  background-color: #555;
+}
+
+/* Lista de productos */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+li {
+  background-color: #fff;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li:hover {
+  border-color: #ccc;
+  background-color: #f9f9f9;
+}
+
+li strong {
+  color: #333;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+/* Botones de acción */
+li button {
+  padding: 6px 12px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-left: 8px;
+  font-family: inherit;
+}
+
+/* Botón Eliminar */
+li button:first-of-type {
+  background-color: #fff;
+  color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+li button:first-of-type:hover {
+  background-color: #d32f2f;
+  color: #fff;
+}
+
+/* Botón Editar */
+li button:last-of-type {
+  background-color: #fff;
+  color: #1976d2;
+  border-color: #1976d2;
+}
+
+li button:last-of-type:hover {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+/* Botón crear nuevo producto */
+button[routerLink="/products/create"] {
+  padding: 12px 24px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: inherit;
+  display: inline-block;
+  text-decoration: none;
+}
+
+button[routerLink="/products/create"]:hover {
+  background-color: #555;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-bar {
+    flex-direction: column;
+  }
+  
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  li button {
+    margin-left: 0;
+    margin-right: 8px;
+  }
+}
+
+/* Estados adicionales */
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+  font-style: italic;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #999;
+  font-style: italic;
+  border: 1px dashed #ddd;
+  border-radius: 4px;
+}

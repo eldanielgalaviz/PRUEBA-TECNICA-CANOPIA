@@ -9,6 +9,9 @@
 
   <label>Descripción:</label>
   <textarea [(ngModel)]="product.description" name="description"></textarea>
+  
+  <label>Categoria:</label>
+  <input type="text" [(ngModel)]="product.category_id" name="Categoria" required />
 
   <button type="submit">{{ isEdit ? 'Actualizar' : 'Crear' }}</button>
 </form>

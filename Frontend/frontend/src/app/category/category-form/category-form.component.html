@@ -1,0 +1,19 @@
+<button type="button"  (click)="goToProducts()">
+          Categorias
+        </button><h2>{{ isEdit ? 'Editar' : 'Crear' }} Producto</h2>
+
+<h2>{{ isEdit ? 'Editar' : 'Crear' }} Categoria</h2>
+
+<form (ngSubmit)="save()">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="Category.name" name="name" required />
+
+
+
+  <label>Descripción:</label>
+  <textarea [(ngModel)]="Category.description" name="description"></textarea>
+  
+
+
+  <button type="submit">{{ isEdit ? 'Actualizar' : 'Crear' }}</button>
+</form>
