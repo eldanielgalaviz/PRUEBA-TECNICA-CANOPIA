@@ -6,21 +6,51 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-    imports: [CommonModule, FormsModule], // Agregar estos imports
-  templateUrl: './login.component.html'
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss'
 })
 export class LoginComponent {
   username = '';
   password = '';
   errorMessage = '';
+  isLoading = false;
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService, 
+    private router: Router
+  ) {}
 
-  onSubmit() {
-    this.auth.login(this.username, this.password).subscribe({
-      next: () => this.router.navigate(['/products']),
-      error: err => this.errorMessage = err.error.message
+  onSubmit(): void {
+    // Validaciones básicas
+    if (!this.username.trim() || !this.password.trim()) {
+      this.errorMessage = 'Username and password are required';
+      return;
+    }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    this.authService.login(this.username.trim(), this.password).subscribe({
+      next: (response) => {
+        console.log('Login successful:', response);
+        // Redirigir a la página de productos o dashboard
+        this.router.navigate(['/products']);
+      },
+      error: (err) => {
+        console.error('Login error:', err);
+        this.errorMessage = err.error?.message || 'Login failed. Please try again.';
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      }
     });
   }
-}
 
+  // Método para ir a registro
+  goToRegister(): void {
+    this.router.navigate(['/register']);
+  }
+}

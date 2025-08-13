@@ -1,1 +1,14 @@
-<p>product-form works!</p>
+<h2>{{ isEdit ? 'Editar' : 'Crear' }} Producto</h2>
+
+<form (ngSubmit)="save()">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="product.name" name="name" required />
+
+  <label>Precio:</label>
+  <input type="number" [(ngModel)]="product.price" name="price" required />
+
+  <label>Descripción:</label>
+  <textarea [(ngModel)]="product.description" name="description"></textarea>
+
+  <button type="submit">{{ isEdit ? 'Actualizar' : 'Crear' }}</button>
+</form>

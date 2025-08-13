@@ -20,6 +20,14 @@ export class AuthService {
       );
   }
 
+    register(username: string, password: string, email: string) {
+    return this.http.post<{ token: string, expiresIn: number }>(`${this.apiUrl}/register`, { username, password, email })
+      .pipe(
+        tap(res => {
+          localStorage.setItem(this.tokenKey, res.token);
+        })
+      );
+  }
   getToken() {
     return localStorage.getItem(this.tokenKey);
   }

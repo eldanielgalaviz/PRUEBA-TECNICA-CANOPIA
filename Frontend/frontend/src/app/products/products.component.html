@@ -1,0 +1,14 @@
+<div class="search-bar">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar producto..." />
+  <button (click)="search()">Buscar</button>
+</div>
+
+<ul>
+  <li *ngFor="let product of products">
+    <strong>{{ product.name }}</strong> - ${{ product.price }}
+    <button (click)="deleteProduct(product.id!)">Eliminar</button>
+    <button [routerLink]="['/products/edit', product.id]">Editar</button>
+  </li>
+</ul>
+
+<button routerLink="/products/create">Crear nuevo producto</button>

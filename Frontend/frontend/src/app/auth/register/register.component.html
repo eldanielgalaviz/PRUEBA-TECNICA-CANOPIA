@@ -1,0 +1,61 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Register</h2>
+    
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <input 
+          type="text"
+          placeholder="Username"
+          [(ngModel)]="username"
+          name="username"
+          class="form-input"
+          [disabled]="isLoading"
+        >
+      </div>
+      
+      <div class="form-group">
+        <input 
+          type="password"
+          placeholder="Password"
+          [(ngModel)]="password"
+          name="password"
+          class="form-input"
+          [disabled]="isLoading"
+        >
+      </div>
+      
+      <div class="form-group">
+        <input 
+          type="email"
+          placeholder="Email"
+          [(ngModel)]="email"
+          name="email"
+          class="form-input"
+          [disabled]="isLoading"
+        >
+      </div>
+      
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+      
+      <button 
+        type="submit"
+        class="btn-primary"
+        [disabled]="isLoading"
+      >
+        <span *ngIf="isLoading" class="loading-spinner"></span>
+        {{ isLoading ? 'Registering...' : 'Register' }}
+      </button>
+    </form>
+    
+    <div class="form-footer">
+      <p>Already have an account? 
+        <button type="button" class="btn-link" (click)="goToLogin()">
+          Sign in
+        </button>
+      </p>
+    </div>
+  </div>
+</div>
